@@ -10,8 +10,12 @@ body {
 
 h1 {
   font-size: 20px;
-  text-align: center;
+  text-align: left;
+  padding: 20px;
   margin-top: 0;
+  font-size: 30px;
+  border: 1px solid #cac7c7;
+  background-color: #fff;
 }
 
 #app {
@@ -40,14 +44,22 @@ h1 {
   border-radius: 5px 0 0 5px;
 }
 
+#input {
+  padding: 17px;
+  width: 20vw;
+  font-size: 25px;
+}
+
 button {
-  padding: 12px;
+  margin-left: 5px;
+  padding: 22px 52px;
   background-color: #5058ab;
   color: white;
   cursor: pointer;
   margin-top: 10px;
   border: 1px solid #ddd;
   border-radius: 6px;
+  font-size: 20px;
 }
 
 .addTask button {
@@ -64,6 +76,17 @@ ul {
   padding: 0;
   border: 1px solid #ddd;
   border-radius: 6px;
+  font-size: 20px;
+}
+
+#todo-list li {
+  font-size: 30px;
+  border: 1px solid #bcb4b4;
+  background-color: #fff;
+}
+
+.remove-button {
+  margin-left: 150px;
 }
 
 .content {
