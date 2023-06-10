@@ -6,14 +6,6 @@ const addButton = document.getElementById('button');
 const todoList = document.getElementById('todo-list');
 const clearButton = document.getElementById('clearButton');
 
-// Load tasks from local storage
-function loadTasks() {
-  const tasks = localStorage.getItem('tasks');
-  if (tasks) {
-    savedTasks.push(...JSON.parse(tasks));
-  }
-}
-
 function updateIndexes() {
   const taskItems = todoList.children;
   for (let i = 0; i < taskItems.length; i += 1) {
@@ -135,8 +127,6 @@ function addTask() {
   taskInput.value = '';
   renderTasks();
 }
-
-loadTasks();
 
 renderTasks();
 
