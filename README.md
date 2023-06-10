@@ -145,7 +145,7 @@ If you like this project. Give me star. please spread it out to your network.
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
-I would like to thanks Microverse for this inspiration.
+I would like to thank Microverse for this inspiration.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
