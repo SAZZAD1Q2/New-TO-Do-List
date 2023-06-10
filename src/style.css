@@ -1,0 +1,129 @@
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  margin: 0 auto;
+  padding-top: 100px;
+  width: 30vw;
+}
+
+h1 {
+  text-align: left;
+  padding: 20px;
+  margin-top: 0;
+  font-size: 30px;
+  border: 1px solid #cac7c7;
+  background-color: #fff;
+}
+
+#app {
+  max-width: 400px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.addTask input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+#input {
+  padding: 17px;
+  width: 20vw;
+  font-size: 25px;
+}
+
+button {
+  margin-left: 5px;
+  padding: 22px 52px;
+  background-color: #5058ab;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+.addTask button {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 20px;
+}
+
+#todo-list li {
+  font-size: 30px;
+  border: 1px solid #bcb4b4;
+  background-color: #fff;
+}
+
+.remove-button {
+  margin-left: 150px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  list-style: none;
+  border-bottom: 1px solid #dbd9d9;
+}
+
+li input[type="checkbox"] {
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+li .task {
+  flex-grow: 1;
+  padding-right: 10px;
+}
+
+.footer_button {
+  width: 100%;
+}
+
+.toDoList input[type="text"] {
+  border: none;
+  flex: 1;
+  padding: 5px;
+}
+
+.popup button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #5058ab;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
