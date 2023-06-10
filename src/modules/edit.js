@@ -1,11 +1,5 @@
-import { saveTasks, savedTasks } from './localStorage.js';
+export const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-export function updateStatus(index, completed) {
-  savedTasks[index].completed = completed;
-  saveTasks();
-}
-
-export function removeTask(index) {
-  savedTasks.splice(index, 1);
-  saveTasks();
+export function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(savedTasks));
 }
