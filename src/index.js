@@ -4,6 +4,7 @@ import { saveTasks, savedTasks } from './modules/edit.js';
 const taskInput = document.getElementById('input');
 const addButton = document.getElementById('button');
 const todoList = document.getElementById('todo-list');
+const clearButton = document.getElementById('clearButton');
 
 function updateIndexes() {
   const taskItems = todoList.children;
@@ -21,14 +22,11 @@ function removeTask(index) {
 }
 
 function removeTaskElement(li) {
-  const index = Array.prototype.indexOf.call(todoList.children, li);
+  const index = parseInt(li.querySelector('input[type="checkbox"]').dataset.index, 10);
   removeTask(index);
 
-  if (li.firstChild.nextSibling.checked) {
-    li.style.display = 'none';
-  } else {
-    todoList.removeChild(li);
-  }
+  todoList.removeChild(li);
+  updateIndexes();
 }
 
 function editTask(li) {
@@ -64,6 +62,8 @@ function editTask(li) {
 }
 
 function renderTasks() {
+  todoList.innerHTML = ''; // Clear the existing list before rendering
+
   savedTasks.forEach((task, index) => {
     const li = document.createElement('li');
     const checkbox = document.createElement('input');
@@ -89,6 +89,26 @@ function renderTasks() {
   updateIndexes();
 }
 
+function toggleTaskStatus(index) {
+  savedTasks[index].completed = !savedTasks[index].completed;
+  saveTasks();
+}
+
+function handleCheckboxChange(event) {
+  const checkbox = event.target;
+  const index = parseInt(checkbox.dataset.index, 10);
+  toggleTaskStatus(index);
+}
+
+function clearCompletedTasks() {
+  const completedTasks = savedTasks.filter((task) => task.completed);
+  completedTasks.forEach((task) => {
+    const index = savedTasks.indexOf(task);
+    removeTask(index);
+  });
+  renderTasks();
+}
+
 function addTask() {
   const taskValue = taskInput.value.trim();
 
@@ -99,38 +119,17 @@ function addTask() {
   const task = {
     text: taskValue,
     completed: false,
-    index: savedTasks.length + 1,
   };
 
   savedTasks.push(task);
   saveTasks();
 
-  const li = document.createElement('li');
-  const checkbox = document.createElement('input');
-  li.style.listStyle = 'none';
-  checkbox.type = 'checkbox';
-
-  checkbox.dataset.index = task.index - 1;
-  li.appendChild(checkbox);
-
-  li.innerHTML += `${task.text} <button class="remove-button">X</button> <button class="edit-button">Edit</button>`;
-  todoList.appendChild(li);
-
-  const removeButton = li.querySelector('.remove-button');
-  removeButton.addEventListener('click', () => {
-    removeTaskElement(li);
-  });
-
-  const editButton = li.querySelector('.edit-button');
-  editButton.addEventListener('click', () => {
-    editTask(li);
-  });
-
   taskInput.value = '';
-
-  updateIndexes();
+  renderTasks();
 }
 
 renderTasks();
 
 addButton.addEventListener('click', addTask);
+clearButton.addEventListener('click', clearCompletedTasks);
+todoList.addEventListener('change', handleCheckboxChange);

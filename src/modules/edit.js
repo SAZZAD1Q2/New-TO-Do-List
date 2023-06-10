@@ -24,16 +24,3 @@ export function updateIndexes() {
     task.index = index + 1;
   });
 }
-
-export function removeTask(index) {
-  savedTasks.splice(index, 1);
-  updateIndexes();
-  saveTasks();
-}
-
-export function editTask(index, editedTaskValue) {
-  if (editedTaskValue !== '') {
-    savedTasks[index].text = editedTaskValue;
-    saveTasks();
-  }
-}
