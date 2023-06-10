@@ -1,9 +1,11 @@
 import './style.css';
-import { saveTasks, savedTasks } from './modules/edit.js';
+import { saveTasks, savedTasks } from './modules/localStorage.js';
+import { updateStatus } from './modules/edit.js';
 
 const taskInput = document.getElementById('input');
 const addButton = document.getElementById('button');
 const todoList = document.getElementById('todo-list');
+const clearButton = document.getElementById('clearButton');
 
 function updateIndexes() {
   const taskItems = todoList.children;
@@ -64,6 +66,8 @@ function editTask(li) {
 }
 
 function renderTasks() {
+  todoList.innerHTML = '';
+
   savedTasks.forEach((task, index) => {
     const li = document.createElement('li');
     const checkbox = document.createElement('input');
@@ -83,6 +87,10 @@ function renderTasks() {
     const editButton = li.querySelector('.edit-button');
     editButton.addEventListener('click', () => {
       editTask(li);
+    });
+
+    checkbox.addEventListener('change', () => {
+      updateStatus(index, checkbox.checked);
     });
   });
 
@@ -131,6 +139,14 @@ function addTask() {
   updateIndexes();
 }
 
-renderTasks();
+function clearCompletedTasks() {
+  const completedTasks = savedTasks.filter((task) => task.completed);
+  completedTasks.forEach((task) => {
+    const index = savedTasks.indexOf(task);
+    removeTask(index);
+  });
+  renderTasks();
+}
 
 addButton.addEventListener('click', addTask);
+clearButton.addEventListener('click', clearCompletedTasks);
